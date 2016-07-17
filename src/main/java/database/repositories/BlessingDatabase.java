@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class BlessingDatabase implements LocalDatabase<Blessing> {
 
-
     @Override
     public Blessing getItem(String id) {
         return MockRealm.INSTANCE.getOneBlessing(id);
