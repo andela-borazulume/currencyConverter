@@ -20,7 +20,7 @@ public class CalculatorLayout extends JFrame {
     private JTextField showResult;
 
     private String getNumberClicked;
-    private String getNumberFromButton;
+    private String getNumberFromButton = "";
 
     private double getConvertedValue;
 
@@ -150,8 +150,7 @@ public class CalculatorLayout extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             getValueToConvert.setText("");
-            getNumberFromButton = null;
-
+            getNumberFromButton = "";
         }
     }
 
@@ -163,5 +162,4 @@ public class CalculatorLayout extends JFrame {
 
         }
     }
-
 }

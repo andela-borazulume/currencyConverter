@@ -14,5 +14,9 @@ public class AppTest {
         String str = "JUnit is working fine";
         assertEquals("JUnit is working fin", str);
 
+        //testing for input and output
+        //check for datatypes
+        //
+
     }
 }
