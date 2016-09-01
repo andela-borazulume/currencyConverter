@@ -1,6 +1,7 @@
 package com.blessing.calculator;
 
 import com.blessing.calculator.GUI.CalculatorLayout;
+import org.json.JSONObject;
 
 import javax.swing.*;
 
@@ -18,9 +19,5 @@ public class CalculatorApp {
         layout.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         layout.setVisible(true);
         layout.setResizable(false);
-
-        Caller caller = new Caller();
-        caller.makeAPICall();
-
     }
 }

@@ -7,6 +7,7 @@ import java.awt.geom.Dimension2D;
 import java.awt.geom.Ellipse2D;
 
 import com.blessing.calculator.*;
+import org.json.JSONObject;
 
 
 /**
@@ -23,10 +24,7 @@ public class CalculatorLayout extends JFrame {
     private JTextField getValueToConvert;
     private JTextField showResult;
 
-    private String getNumberClicked;
     private String getNumberFromButton = "";
-
-    private double getConvertedValue;
 
     public CalculatorLayout() {
         super("converter");
@@ -41,9 +39,24 @@ public class CalculatorLayout extends JFrame {
 
         convertTo = new JComboBox();
         convertTo.addItem("NGN");
-        convertTo.addItem("EUR");
-        convertTo.addItem("NGN");
-        convertTo.addItem("NGN");
+        convertTo.addItem("AED");
+        convertTo.addItem("AFN");
+        convertTo.addItem("AMD");
+        convertTo.addItem("ANG");
+        convertTo.addItem("AOA");
+        convertTo.addItem("ARS");
+        convertTo.addItem("AUD");
+        convertTo.addItem("AWG");
+        convertTo.addItem("AZN");
+        convertTo.addItem("BAM");
+        convertTo.addItem("BBD");
+        convertTo.addItem("BDT");
+        convertTo.addItem("BGN");
+        convertTo.addItem("BHD");
+        convertTo.addItem("BIF");
+        convertTo.addItem("BMD");
+        convertTo.addItem("BND");
+        convertTo.addItem("BOB");
 
         //Textfields
         getValueToConvert = new JTextField();
@@ -153,6 +166,7 @@ public class CalculatorLayout extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             getValueToConvert.setText("");
+            showResult.setText("");
             getNumberFromButton = "";
         }
     }
@@ -161,13 +175,20 @@ public class CalculatorLayout extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            final String getSelectedCurrencyToConvert = "USD"+String.valueOf(convertTo.getSelectedItem());
 
             Caller caller = new Caller();
-            caller.makeAPICall();
+            caller.makeAPICall(new OnResponse() {
+                @Override
+                public void response(JSONObject jsonResponse) {
 
-            //getting the text from the convert to in the combobox and append USD
-            // query the JSON using
-            //Making the
+                    int amountToConvert = Integer.parseInt(getNumberFromButton);
+
+                    int result = amountToConvert * Integer.valueOf(jsonResponse.optInt(getSelectedCurrencyToConvert));
+
+                    showResult.setText(""+result);
+                }
+            });
 
         }
     }

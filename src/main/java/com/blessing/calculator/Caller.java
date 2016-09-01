@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * Created by blessingorazulume on 7/20/16.
  */
 public class Caller {
-    public static void makeAPICall (){
+    public static void makeAPICall (final OnResponse onResponse){
         final Thread thread = new Thread(){
             @Override
             public void run() {
@@ -18,6 +18,7 @@ public class Caller {
                         public void response(JSONObject response) {
                             if(response != null){
                                 try {
+                                    onResponse.response(response);
                                     join();
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();

@@ -30,7 +30,6 @@ public class HttpUrlConnectionToApi {
 
         int respondCode = httpURLConnection.getResponseCode();
         System.out.println("\nSending a GET request to URL : " + url);
-        System.out.println("Response code : " + respondCode);
 
         BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
         String inputLine;
@@ -46,10 +45,10 @@ public class HttpUrlConnectionToApi {
         //play with response here
         try {
             JSONObject jsonObject = new JSONObject(resp.toString());
-            System.out.println(jsonObject.toString());
+//            System.out.println(jsonObject.toString());
 
             JSONObject quotesObj = new JSONObject(jsonObject.optString("quotes"));
-            System.out.println(quotesObj.optString("USDNGN"));
+//            System.out.println(quotesObj.optString("USDNGN"));
 
             jsonResponse.response(quotesObj);
         } catch (JSONException e) {
